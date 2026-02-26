@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Dynamic Title -->
+    <title>{% block title %}Block | HTMX + Django App{% endblock %}</title>
+
+    <!-- Meta -->
+    <meta name="description" content="Block - A modern HTMX + Django learning application">
+    <meta name="author" content="Block App">
+
+    <!-- Tailwind + DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.22/dist/full.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+
+    <!-- Optional: Alpine (for small interactivity if needed later) -->
+    <!-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
+
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body class="bg-base-200 min-h-screen">
+
+    <!-- 🔹 Navbar -->
+    <div class="navbar bg-base-100 shadow-md px-6">
+        <div class="flex-1">
+            <a href="{% url 'home' %}" class="text-xl font-bold">
+                🚀 Block
+            </a>
+        </div>
+        <div class="flex-none space-x-4">
+            <a href="{% url 'home' %}" class="btn btn-ghost btn-sm">Home</a>
+            <a href="#" class="btn btn-ghost btn-sm">About</a>
+        </div>
+    </div>
+
+    <!-- 🔹 Main Content -->
+    <main class="container mx-auto px-6 py-10">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- 🔹 Footer -->
+    <footer class="footer footer-center p-4 bg-base-100 text-base-content mt-10 shadow-inner">
+        <aside>
+            <p>© {% now "Y" %} Block — Built with Django + HTMX</p>
+        </aside>
+    </footer>
+
+    {% block extra_scripts %}{% endblock %}
+
+</body>
+</html>
