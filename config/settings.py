@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog'
+    'blog',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -124,6 +125,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'blog.User'
 LOGIN_URL = '/admin/'
 
-
+#Aws configuration
+AWS_ACCESS_KEY_ID =''
+AWS_SECRET_ACCESS_KEY = ''
 
 

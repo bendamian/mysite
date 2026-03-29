@@ -1,0 +1,63 @@
+<div class="max-w-5xl mx-auto mt-10 p-6 bg-base-100 shadow-xl rounded-2xl">
+
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-bold">Contact List</h2>
+        <a href="#" class="btn btn-primary btn-sm">
+            + Add Contact
+        </a>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="table table-zebra w-full">
+
+            <!-- Head -->
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Created</th>
+                    <th class="text-right">Actions</th>
+                </tr>
+            </thead>
+
+            <!-- Body -->
+            <tbody>
+                {% for contact in contacts %}
+                    <tr class="hover transition duration-200">
+                        <td class="font-semibold">
+                            {{ contact.name }}
+                        </td>
+
+                        <td class="text-sm opacity-70">
+                            {{ contact.email }}
+                        </td>
+
+                        <td class="text-sm">
+                            {{ contact.created_at|date:"M d, Y" }}
+                        </td>
+
+                        <td class="text-right space-x-2">
+                            <a href="#" class="btn btn-sm btn-primary">
+                                View
+                            </a>
+                            <a href="#" class="btn btn-sm btn-outline">
+                                Edit
+                            </a>
+                            <a href="#" class="btn btn-sm btn-error">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4" class="text-center text-gray-500">
+                            No contacts found.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
