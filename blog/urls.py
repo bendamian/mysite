@@ -6,4 +6,5 @@ app_name = 'blog'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('search/', views.search_contacts, name='search'),
 ]
