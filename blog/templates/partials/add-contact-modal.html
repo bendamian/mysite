@@ -1,0 +1,64 @@
+<dialog id="contact_modal" class="modal">
+  <div class="modal-box max-w-md mx-auto p-6 space-y-6 rounded-2xl shadow-lg bg-white">
+
+    <!-- Heading -->
+    <h3 class="text-2xl font-bold text-gray-800 text-center">Add Contact</h3>
+
+    <form   hx-post="{% url 'blog:add_contact' %}" 
+    hx-target="#contact-table-body"
+    hx-swap="afterbegin" 
+    hx-on:success="contact_modal.close();this.reset();"
+    class="space-y-5">
+      {% csrf_token %}
+
+      <!-- Name field -->
+      <div class="relative w-full">
+        {{ form.name }}
+        <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all duration-200
+              peer-placeholder-shown:top-3.5 
+              peer-placeholder-shown:text-base 
+              peer-placeholder-shown:text-gray-400
+              peer-focus:top-1 
+              peer-focus:text-sm 
+              peer-focus:text-blue-600">
+          {{ form.name.label }}
+        </label>
+        {% if form.name.errors %}
+          <p class="text-red-500 text-sm mt-1">{{ form.name.errors.0 }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Email field -->
+      <div class="relative w-full">
+        {{ form.email }}
+        <label class="absolute left-4 top-2 text-gray-500 text-sm transition-all duration-200
+              peer-placeholder-shown:top-3.5 
+              peer-placeholder-shown:text-base 
+              peer-placeholder-shown:text-gray-400
+              peer-focus:top-1 
+              peer-focus:text-sm 
+              peer-focus:text-blue-600">
+          {{ form.email.label }}
+        </label>
+        {% if form.email.errors %}
+          <p class="text-red-500 text-sm mt-1">{{ form.email.errors.0 }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex justify-between items-center pt-2">
+        <button type="button" onclick="contact_modal.close()" 
+                class="px-4 py-2 text-gray-600 hover:text-gray-800 transition">
+          Cancel
+        </button>
+
+        <button type="submit" 
+                class="px-5 py-2.5 bg-blue-500 text-white rounded-lg shadow 
+                       hover:bg-blue-600 hover:shadow-md transition-all">
+          Submit
+        </button>
+      </div>
+
+    </form>
+  </div>
+</dialog>

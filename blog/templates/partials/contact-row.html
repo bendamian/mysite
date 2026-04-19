@@ -1,0 +1,26 @@
+<tr class="hover transition duration-200">
+                        <td class="font-semibold">
+                            {{ contact.name }}
+                        </td>
+
+                        <td class="text-sm opacity-70">
+                            {{ contact.email }}
+                        </td>
+
+                        <td class="text-sm">
+                            {{ contact.created_at|date:"M d, Y" }}
+                        </td>
+
+                        <td class="text-right space-x-2">
+                            <a href="#" class="btn btn-sm btn-primary">
+                                View
+                            </a>
+                            <a href="#" class="btn btn-sm btn-outline">
+                                Edit
+                            </a>
+                            <a href="#" class="btn btn-sm btn-error">
+                                Delete
+                            </a>
+                        </td>
+                    
+                    </tr>

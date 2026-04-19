@@ -2,13 +2,14 @@
 
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-2xl font-bold">Contact List</h2>
-        <a href="#" class="btn btn-primary btn-sm">
-            + Add Contact
-        </a>
+         {% include "partials/spinner.html" %}
+         <button class="btn btn-primary" onclick="contact_modal.showModal()">Add Contact</button>
+            {% include "partials/add-contact-modal.html" %}
+       
     </div>
 
     <div class="overflow-x-auto" >
-        <table class="table table-zebra w-full"  id="contact-table">
+        <table class="table table-zebra w-full" >
 
             <!-- Head -->
             <thead>
@@ -21,33 +22,10 @@
             </thead>
 
             <!-- Body -->
-            <tbody>
+            <tbody id="contact-table-body">
+                 
                 {% for contact in contacts %}
-                    <tr class="hover transition duration-200">
-                        <td class="font-semibold">
-                            {{ contact.name }}
-                        </td>
-
-                        <td class="text-sm opacity-70">
-                            {{ contact.email }}
-                        </td>
-
-                        <td class="text-sm">
-                            {{ contact.created_at|date:"M d, Y" }}
-                        </td>
-
-                        <td class="text-right space-x-2">
-                            <a href="#" class="btn btn-sm btn-primary">
-                                View
-                            </a>
-                            <a href="#" class="btn btn-sm btn-outline">
-                                Edit
-                            </a>
-                            <a href="#" class="btn btn-sm btn-error">
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
+                    {% include "partials/contact-row.html" %}
                 {% empty %}
                     <tr>
                         <td colspan="4" class="text-center text-gray-500">
